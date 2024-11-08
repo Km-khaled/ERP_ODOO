@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_auteur,tp_erp.access_auteur,model_tp_erp_auteur,,1,1,1,1
+access_livre,tp_erp.access_livre,model_tp_erp_livre,,1,1,1,1
+access_emprunteur,tp_erp.access_emprunteur,model_tp_erp_emprunteur,,1,1,1,1
+access_emprunt,tp_erp.access_emprunt,model_tp_erp_emprunt,,1,1,1,1

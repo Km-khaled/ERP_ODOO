@@ -1,0 +1,51 @@
+<odoo>
+    <record id="view_livre_form" model="ir.ui.view">
+        <field name="name">livre.form</field>
+        <field name="model">tp_erp.livre</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="titre" />
+                        <field name="langue_livre" />
+                        <field name="isbn" />
+                        <field name="nbre_pages" />
+                        <field name="image_libre" widget="image" />
+                        <field name="auteur_ids" widget="many2many_tags" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_livre_search" model="ir.ui.view">
+        <field name="name">livre.search</field>
+        <field name="model">tp_erp.livre</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="titre" />
+                <field name="langue_livre" />
+                <field name="isbn" string="ISBN" />
+                <field name="nbre_pages" />
+            </search>
+        </field>
+    </record>
+
+
+    <record id="view_livre_tree" model="ir.ui.view">
+        <field name="name">view_livre_tree</field>
+        <field name="model">tp_erp.livre</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="titre" />
+                <field name="langue_livre" />
+                <field name="isbn" />
+                <field name="nbre_pages" />
+                <field name="image_libre" />
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

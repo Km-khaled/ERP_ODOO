@@ -1,0 +1,51 @@
+<odoo>
+    <record id="view_auteur_form" model="ir.ui.view">
+        <field name="name">auteur.form</field>
+        <field name="model">tp_erp.auteur</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="prenom" />
+                        <field name="date_naissance" />
+                        <field name="nationalite" />
+                        <field name="sexe" />
+                        <field name="livre_ids" widget="many2many_tags" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_auteur_search" model="ir.ui.view">
+        <field name="name">auteur.search</field>
+        <field name="model">tp_erp.auteur</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="prenom" />
+                <field name="nationalite" />
+                <filter string="Auteurs Tunisiens"
+                    name="tunisian_authors"
+                    domain="[('nationalite', '=', 'Tunisienne')]" />
+            </search>
+        </field>
+    </record>
+
+
+    <record id="view_auteur_tree" model="ir.ui.view">
+        <field name="name">view_auteur_tree</field>
+        <field name="model">tp_erp.auteur</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="prenom" />
+                <field name="nationalite" />
+                <field name="date_naissance" />
+                <field name="sexe" />
+            </tree>
+        </field>
+    </record>
+</odoo>

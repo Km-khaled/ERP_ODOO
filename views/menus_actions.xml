@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Actions -->
+    <record id="action_tp_erp_auteur" model="ir.actions.act_window">
+        <field name="name">Auteurs</field>
+        <field name="res_model">tp_erp.auteur</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_auteur_search" />
+    </record>
+
+    <record id="action_tp_erp_livre" model="ir.actions.act_window">
+        <field name="name">Livres</field>
+        <field name="res_model">tp_erp.livre</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_livre_search" />
+    </record>
+
+    
+    <record id="action_tp_erp_emprunteur" model="ir.actions.act_window">
+        <field name="name">Emprunteurs</field>
+        <field name="res_model">tp_erp.emprunteur</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_emprunteur_search" />
+    </record>
+
+    
+
+    <record id="action_tp_erp_emprunt" model="ir.actions.act_window">
+        <field name="name">Emprunts</field>
+        <field name="res_model">tp_erp.emprunt</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_emprunt_search" />
+    </record>
+
+    <!-- Menus -->
+    <menuitem id="menu_tp_erp_root" name="Bibliothèque" />
+
+    <menuitem id="menu_tp_erp_auteur"
+        name="Auteurs"
+        parent="menu_tp_erp_root"
+        action="action_tp_erp_auteur"
+        sequence="10" />
+
+    <menuitem id="menu_tp_erp_livre"
+        name="Livres"
+        parent="menu_tp_erp_root"
+        action="action_tp_erp_livre"
+        sequence="20" />
+
+    <menuitem id="menu_tp_erp_emprunteur"
+        name="Emprunteurs"
+        parent="menu_tp_erp_root"
+        action="action_tp_erp_emprunteur"
+        sequence="30" />
+
+    <menuitem id="menu_tp_erp_emprunt"
+        name="Emprunts"
+        parent="menu_tp_erp_root"
+        action="action_tp_erp_emprunt"
+        sequence="40" />
+</odoo>

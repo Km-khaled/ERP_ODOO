@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_emprunteur_form" model="ir.ui.view">
+        <field name="name">emprunteur.form</field>
+        <field name="model">tp_erp.emprunteur</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="prenom"/>
+                            <field name="date_naissance"/>
+                            <field name="state"/>
+                            <field name="sexe"/>
+                            <field name="nbr_emprunt" readonly="1" />
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_emprunteur_tree" model="ir.ui.view">
+        <field name="name">emprunteur.tree</field>
+        <field name="model">tp_erp.emprunteur</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name"/>
+                <field name="prenom"/>
+                <field name="date_naissance"/>
+                <field name="state"/>
+                <field name="sexe"/>
+                <field name="nbr_emprunt" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_emprunteur_search" model="ir.ui.view">
+        <field name="name">emprunteur.search</field>
+        <field name="model">tp_erp.emprunteur</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="prenom"/>
+                <field name="state"/>
+                <group expand="0" string="Group By">
+                    <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+  
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_emprunt_form" model="ir.ui.view">
+        <field name="name">emprunt.form</field>
+        <field name="model">tp_erp.emprunt</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+
+                            <field name="emprunteur_id"/>
+                            <field name="emprunt_ligne_id"/>
+                            <field name="date_debut"/>
+                            <field name="date_fin"/>
+                            <field name="rendu"/>
+                            <tree editable="top">
+                                <field name="livre_id"/>
+                                <field name="isbn"/>
+                                <field name="langue_livre"/>
+                                <field name="nbre_pages"/>
+                            </tree>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_emprunt_tree" model="ir.ui.view">
+        <field name="name">emprunt.tree</field>
+        <field name="model">tp_erp.emprunt</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="emprunt_ligne_id"/>
+                <field name="emprunteur_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="rendu"/>
+                <tree editable="top">
+                    <field name="livre_id"/>
+                    <field name="isbn"/>
+                    <field name="langue_livre"/>
+                    <field name="nbre_pages"/>
+                </tree>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_emprunt_search" model="ir.ui.view">
+        <field name="name">emprunt.search</field>
+        <field name="model">tp_erp.emprunt</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="livre_id"/>
+                <field name="emprunteur_id"/>
+                <field name="livre_id" string="Auteur" filter_domain="[('livre_id.auteur_ids.name','ilike',self)]"/>
+                <filter string="Rendus" name="returned" domain="[('rendu', '=', True)]"/>
+                <filter string="Non Rendus" name="not_returned" domain="[('rendu', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="État de retour" name="group_by_return" context="{'group_by': 'rendu'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    
+</odoo>

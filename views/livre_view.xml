@@ -12,6 +12,14 @@
                         <field name="nbre_pages" />
                         <field name="image_libre" widget="image" />
                         <field name="auteur_ids" widget="many2many_tags" />
+                        <field name="emprunt_ligne_id">
+                            <tree editable="top">
+                                <field name="emprunt_id"/>
+                                <field name="isbn"/>
+                                <field name="langue_livre"/>
+                                <field name="nbre_pages"/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>
@@ -37,7 +45,7 @@
         <field name="name">view_livre_tree</field>
         <field name="model">tp_erp.livre</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree editable="top">
                 <field name="titre" />
                 <field name="langue_livre" />
                 <field name="isbn" />

@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Form View -->
+    <!-- views/emprunteur_view.xml -->
     <record id="view_emprunteur_form" model="ir.ui.view">
         <field name="name">emprunteur.form</field>
         <field name="model">tp_erp.emprunteur</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="%(action_emprunt_reset_wizard)d"
+                            type="action"
+                            string="Réinitialiser emprunts"
+                            class="btn btn-warning"
+                            attrs="{'invisible': [('nbr_emprunt', '=', 0)]}"
+                            groups="module_name.group_directeur"/>
+                </header>
                 <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="prenom"/>
-                            <field name="date_naissance"/>
-                            <field name="state"/>
-                            <field name="sexe"/>
-                            <field name="nbr_emprunt" readonly="1" />
-                        </group>
+                    <group>
+                        <field name="name"/>
+                        <field name="prenom"/>
+                        <field name="date_naissance"/>
+                        <field name="state"/>
+                        <field name="sexe"/>
+                        <field name="nbr_emprunt" readonly="1"/>
+                        <field name="emprunt_ids">
+                            <tree editable="top">
+                                <field name="emprunt_ligne_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="action_delete" type="object" string="Delete Emprunteur" class="btn btn-danger"/>
+                        <button name="%(action_emprunt_wizard)d" type="action" string="Ajouter emprunts" class="btn-primary"/>
+                    </footer>
                 </sheet>
             </form>
         </field>
@@ -26,12 +43,12 @@
         <field name="model">tp_erp.emprunteur</field>
         <field name="arch" type="xml">
             <tree editable="top">
-                <field name="name"/>
-                <field name="prenom"/>
-                <field name="date_naissance"/>
-                <field name="state"/>
-                <field name="sexe"/>
-                <field name="nbr_emprunt" readonly="1"/>
+                <field name="name" />
+                <field name="prenom" />
+                <field name="date_naissance" />
+                <field name="state" />
+                <field name="sexe" />
+                <field name="nbr_emprunt" readonly="1" />
             </tree>
         </field>
     </record>
@@ -42,15 +59,15 @@
         <field name="model">tp_erp.emprunteur</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name"/>
-                <field name="prenom"/>
-                <field name="state"/>
+                <field name="name" />
+                <field name="prenom" />
+                <field name="state" />
                 <group expand="0" string="Group By">
-                    <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="État" name="group_state" context="{'group_by': 'state'}" />
                 </group>
             </search>
         </field>
     </record>
 
-  
+
 </odoo>

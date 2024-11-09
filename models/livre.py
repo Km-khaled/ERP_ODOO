@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields , api
 
 
 class Livre(models.Model):
@@ -10,16 +10,20 @@ class Livre(models.Model):
         [("francais", "Français"), ("arabe", "Arabe"), ("anglais", "Anglais")],
         string="Langue du Livre",
     )
-    isbn = fields.Char(string='ISBN', required=True)
+    isbn = fields.Char(string="ISBN", required=True)
     nbre_pages = fields.Integer(string="Nombre de Pages")
     image_libre = fields.Binary(string="Image")
     auteur_ids = fields.Many2many("tp_erp.auteur", string="Auteurs")
-    emprunt_ligne_id = fields.One2many("tp_erp.emprunt_ligne", "livre_id", string="Emprunts")
+    emprunt_ligne_id = fields.One2many(
+        "tp_erp.emprunt_ligne", "livre_id", string="Emprunts"
+    )
 
-    @api.onchange('titre')
-    def _onchange_titre(self):
-        if self.titre:
-            # Example logic to update fields based on the title
-            self.isbn = "Updated ISBN based on title"
-            self.langue_livre = "francais"  # Example value
-            self.nbre_pages = 100  # Example value
+
+
+    @api.onchange('titre','isbn','langue_livre')
+    def _onchange_livre_id(self):
+        if self.emprunt_ligne_id:
+            self.nbre_pages = self.emprunt_ligne_id.nbre_pages
+            self.isbn = self.emprunt_ligne_id.isbn
+            self.langue_livre = self.emprunt_ligne_id.langue_livre
+

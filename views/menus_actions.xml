@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- views/menus_actions.xml -->
 <odoo>
     <!-- Actions -->
     <record id="action_tp_erp_auteur" model="ir.actions.act_window">
@@ -15,21 +15,37 @@
         <field name="search_view_id" ref="view_livre_search" />
     </record>
 
-    
     <record id="action_tp_erp_emprunteur" model="ir.actions.act_window">
         <field name="name">Emprunteurs</field>
         <field name="res_model">tp_erp.emprunteur</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_emprunteur_search" />
+        <field name="context">{'default_export': True}</field>
     </record>
-
-    
 
     <record id="action_tp_erp_emprunt" model="ir.actions.act_window">
         <field name="name">Emprunts</field>
         <field name="res_model">tp_erp.emprunt</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_emprunt_search" />
+    </record>
+
+    <record id="action_emprunt_wizard" model="ir.actions.act_window">
+        <field name="name">Ajouter Emprunt</field>
+        <field name="res_model">tp_erp.emprunt_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_tp_erp_emprunteur"/>
+        <field name="view_id" ref="view_emprunt_wizard_form"/>
+    </record>
+
+    <record id="action_emprunt_reset_wizard" model="ir.actions.act_window">
+        <field name="name">Réinitialiser Emprunts</field>
+        <field name="res_model">tp_erp.emprunt.reset.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_tp_erp_emprunteur"/>
+        <field name="view_id" ref="view_emprunt_reset_wizard_form"/>
     </record>
 
     <!-- Menus -->

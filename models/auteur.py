@@ -3,7 +3,7 @@ from odoo import models, fields
 class Auteur(models.Model):
     _name = 'tp_erp.auteur'
     _description = 'Auteur'
-    # _rec_name = 'display_name'
+    _rec_name = 'name'
 
 
     auteur_id =fields.Char(string="auteur_id")

@@ -1,0 +1,19 @@
+<!-- views/emprunt_wizard_view.xml -->
+<odoo>
+    <record id="view_emprunt_wizard_form" model="ir.ui.view">
+        <field name="name">emprunt.wizard.form</field>
+        <field name="model">tp_erp.emprunt_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Ajouter Emprunt">
+                <group>
+                    <field name="emprunteur_id"/>
+                    <field name="livre_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button string="Ajouter" type="object" name="action_add_emprunt" class="btn-primary"/>
+                    <button string="Annuler" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

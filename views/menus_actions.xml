@@ -1,4 +1,3 @@
-<!-- views/menus_actions.xml -->
 <odoo>
     <!-- Actions -->
     <record id="action_tp_erp_auteur" model="ir.actions.act_window">
@@ -7,14 +6,14 @@
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_auteur_search" />
     </record>
-
+    
     <record id="action_tp_erp_livre" model="ir.actions.act_window">
         <field name="name">Livres</field>
         <field name="res_model">tp_erp.livre</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_livre_search" />
     </record>
-
+    
     <record id="action_tp_erp_emprunteur" model="ir.actions.act_window">
         <field name="name">Emprunteurs</field>
         <field name="res_model">tp_erp.emprunteur</field>
@@ -22,14 +21,14 @@
         <field name="search_view_id" ref="view_emprunteur_search" />
         <field name="context">{'default_export': True}</field>
     </record>
-
+    
     <record id="action_tp_erp_emprunt" model="ir.actions.act_window">
         <field name="name">Emprunts</field>
         <field name="res_model">tp_erp.emprunt</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_emprunt_search" />
     </record>
-
+    
     <record id="action_emprunt_wizard" model="ir.actions.act_window">
         <field name="name">Ajouter Emprunt</field>
         <field name="res_model">tp_erp.emprunt_wizard</field>
@@ -38,37 +37,39 @@
         <field name="binding_model_id" ref="model_tp_erp_emprunteur"/>
         <field name="view_id" ref="view_emprunt_wizard_form"/>
     </record>
-
-    <record id="action_emprunt_reset_wizard" model="ir.actions.act_window">
-        <field name="name">Réinitialiser Emprunts</field>
-        <field name="res_model">tp_erp.emprunt.reset.wizard</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-        <field name="binding_model_id" ref="model_tp_erp_emprunteur"/>
-        <field name="view_id" ref="view_emprunt_reset_wizard_form"/>
-    </record>
-
+    
+<record id="action_emprunt_reset_wizard" model="ir.actions.act_window">
+    <field name="name">Réinitialiser Emprunts</field>
+    <field name="res_model">tp_erp.emprunt.reset.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="binding_model_id" ref="model_tp_erp_emprunteur"/>
+    <field name="view_id" ref="view_emprunt_reset_wizard_form"/>
+    <field name="context">{'default_emprunteur_id': active_id}</field>
+    <field name="groups_id" eval="[(6, 0, [ref('tp_erp.group_directeur')])]"/>
+</record>
+    
     <!-- Menus -->
     <menuitem id="menu_tp_erp_root" name="Bibliothèque" />
-
+    
     <menuitem id="menu_tp_erp_auteur"
         name="Auteurs"
         parent="menu_tp_erp_root"
         action="action_tp_erp_auteur"
         sequence="10" />
-
+    
     <menuitem id="menu_tp_erp_livre"
         name="Livres"
         parent="menu_tp_erp_root"
         action="action_tp_erp_livre"
         sequence="20" />
-
+    
     <menuitem id="menu_tp_erp_emprunteur"
         name="Emprunteurs"
         parent="menu_tp_erp_root"
         action="action_tp_erp_emprunteur"
         sequence="30" />
-
+    
     <menuitem id="menu_tp_erp_emprunt"
         name="Emprunts"
         parent="menu_tp_erp_root"

@@ -8,9 +8,10 @@
                 <group>
                     <field name="emprunteur_id"/>
                     <field name="livre_ids" widget="many2many_tags"/>
+                    <field name="date_fin"/>
                 </group>
                 <footer>
-                    <button string="Ajouter" type="object" name="action_add_emprunt" class="btn-primary"/>
+                    <button string="Ajouter" type="object" name="action_ajouter_emprunt" class="btn-primary"/>
                     <button string="Annuler" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

@@ -7,12 +7,12 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="%(action_emprunt_reset_wizard)d"
-                            type="action"
-                            string="Réinitialiser emprunts"
-                            class="btn btn-warning"
-                            attrs="{'invisible': [('nbr_emprunt', '=', 0)]}"
-                            groups="module_name.group_directeur"/>
+                 <button name="%(action_emprunt_reset_wizard)d"
+        type="action"
+        string="Réinitialiser emprunts"
+        class="btn btn-warning"
+        attrs="{'invisible': [('nbr_emprunt', '=', 0)]}"
+        groups="tp_erp.group_directeur"/>
                 </header>
                 <sheet>
                     <group>
@@ -68,6 +68,4 @@
             </search>
         </field>
     </record>
-
-
 </odoo>
